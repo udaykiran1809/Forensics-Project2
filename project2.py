@@ -90,7 +90,7 @@ def FileRecovery(disk_hex):
                     search = loc + 8
 
             # PDF
-            if header == 'PDF':
+            elif header == 'PDF':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -135,7 +135,7 @@ def FileRecovery(disk_hex):
                     search = loc + 8
 
             # BMP
-            if header == 'BMP':
+            elif header == 'BMP':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -168,7 +168,7 @@ def FileRecovery(disk_hex):
                     search = loc + 4
 
             # GIF87a
-            if header == 'GIF1':
+            elif header == 'GIF1':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -203,7 +203,7 @@ def FileRecovery(disk_hex):
                     search = loc + 12
             
             # GIF89a
-            if header == 'GIF2':
+            elif header == 'GIF2':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -238,7 +238,7 @@ def FileRecovery(disk_hex):
                     search = loc + 12
 
             # JPG
-            if header == 'JPG':
+            elif header == 'JPG':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -273,7 +273,7 @@ def FileRecovery(disk_hex):
                     search = loc + 6
             
             # DOCX
-            if header == 'DOCX':
+            elif header == 'DOCX':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -308,7 +308,7 @@ def FileRecovery(disk_hex):
                     search = loc + 16
 
             # AVI
-            if header == 'AVI':
+            elif header == 'AVI':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -341,7 +341,7 @@ def FileRecovery(disk_hex):
                     search = loc + 32
 
             # PNG
-            if header == 'PNG':
+            elif header == 'PNG':
 
                 # Start of Sector
                 if loc%512 == 0:
@@ -376,7 +376,7 @@ def FileRecovery(disk_hex):
                     search = loc + 16
 
             # ZIP
-            if header == 'ZIP':
+            elif header == 'ZIP':
 
                 # Start of Sector
                 if loc%512 == 0:
