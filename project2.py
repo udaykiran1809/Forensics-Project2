@@ -25,25 +25,16 @@ file_header = {
 file_footer = {
     'MPG1': '000001B7',
     'MPG2': '000001B9',
-    'PDF1': '0A2525454F46',
-    'PDF2': '0A2525454F460A',
-    'PDF3': '0D0A2525454F460D0A',
-    'PDF4': '0D2525454F460D',
-    'GIF': '003B',
-    'JPG': 'FFD9',
+    'PDF1': '0A2525454F460000',
+    'PDF2': '0A2525454F460A0000',
+    'PDF3': '0D0A2525454F460D0A0000',
+    'PDF4': '0D2525454F460D0000',
+    'GIF': '003B0000',
+    'JPG': 'FFD90000',
     'DOCX': '504B0506',
     'PNG': '49454E44AE426082',
     'ZIP': '504B'
 }
-
-def Find_loc(disk_hex):
-    loc = 0
-    for fh in file_header:
-        fh_bytes = file_header[fh]
-        loc = disk_hex.find(fh_bytes)
-        if loc%512 == 0:
-            print(f'{fh}: {loc}')
-
 
 def FileRecovery(disk_hex):
 
