@@ -56,7 +56,7 @@ def FileRecovery(disk_hex):
             if header == 'MPG':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -93,7 +93,7 @@ def FileRecovery(disk_hex):
             elif header == 'PDF':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -138,7 +138,7 @@ def FileRecovery(disk_hex):
             elif header == 'BMP':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -171,7 +171,7 @@ def FileRecovery(disk_hex):
             elif header == 'GIF1':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -206,7 +206,7 @@ def FileRecovery(disk_hex):
             elif header == 'GIF2':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -241,7 +241,7 @@ def FileRecovery(disk_hex):
             elif header == 'JPG':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -276,7 +276,7 @@ def FileRecovery(disk_hex):
             elif header == 'DOCX':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -311,7 +311,7 @@ def FileRecovery(disk_hex):
             elif header == 'AVI':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -344,7 +344,7 @@ def FileRecovery(disk_hex):
             elif header == 'PNG':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -379,7 +379,7 @@ def FileRecovery(disk_hex):
             elif header == 'ZIP':
 
                 # Start of Sector
-                if loc%512 == 0:
+                if (loc%512) == 0:
 
                     # Found File 
                     total_found = total_found + 1
