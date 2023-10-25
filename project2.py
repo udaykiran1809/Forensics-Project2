@@ -9,32 +9,41 @@ import struct
 
 
 file_header = {
-    'MPG': '000001B',
+    'MPG': '000001b',
     'PDF': '25504446',
-    'BMP': '424D',
+    'BMP': '424d',
     'GIF1': '474946383761',
     'GIF2': '474946383961',
-    'JPG': 'FFD8FF',
-    'DOCX': '504B030414000600',
+    'JPG': 'ffd8ff',
+    'DOCX': '504b030414000600',
     'AVI': '52494646',
-    'PNG': '89504E470D0A1A0A',
-    'ZIP': '504B0304'
+    'PNG': '89504e470d0a1a0a',
+    'ZIP': '504b0304'
     
 }
 
 file_footer = {
-    'MPG1': '000001B7',
-    'MPG2': '000001B9',
-    'PDF1': '0A2525454F46000000',
-    'PDF2': '0A2525454F460A000000',
-    'PDF3': '0D0A2525454F460D0A000000',
-    'PDF4': '0D2525454F460D000000',
-    'GIF': '003B0000',
-    'JPG': 'FFD90000',
-    'DOCX': '504B0506',
-    'PNG': '49454E44AE426082',
-    'ZIP': '504B'
+    'MPG1': '000001b7',
+    'MPG2': '000001b9',
+    'PDF1': '0a2525454f46',
+    'PDF2': '0a2525454f460a',
+    'PDF3': '0d0a2525454f460d0a',
+    'PDF4': '0d2525454f460d',
+    'GIF': '003b',
+    'JPG': 'ffd9',
+    'DOCX': '504b0506',
+    'PNG': '49454e44ae426082',
+    'ZIP': '504b'
 }
+
+def Find_loc(disk_hex):
+    loc = 0
+    for fh in file_header:
+        fh_bytes = file_header[fh]
+        loc = disk_hex.find(fh_bytes)
+        if loc%512 == 0:
+            print(f'{fh}: {loc}')
+
 
 def FileRecovery(disk_hex):
 
@@ -56,7 +65,7 @@ def FileRecovery(disk_hex):
             if header == 'MPG':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -78,8 +87,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ",end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ",end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -90,10 +99,10 @@ def FileRecovery(disk_hex):
                     search = loc + 8
 
             # PDF
-            elif header == 'PDF':
+            if header == 'PDF':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -123,8 +132,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ",end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ",end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -135,10 +144,10 @@ def FileRecovery(disk_hex):
                     search = loc + 8
 
             # BMP
-            elif header == 'BMP':
+            if header == 'BMP':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -156,8 +165,8 @@ def FileRecovery(disk_hex):
                     end_offset = start_offset + file_size
                     
                     # Printing Information
-                    print(file_name + ", ",end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ",end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,file_size,file_name)
@@ -168,10 +177,10 @@ def FileRecovery(disk_hex):
                     search = loc + 4
 
             # GIF87a
-            elif header == 'GIF1':
+            if header == 'GIF1':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -191,8 +200,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ",end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ",end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -203,10 +212,10 @@ def FileRecovery(disk_hex):
                     search = loc + 12
             
             # GIF89a
-            elif header == 'GIF2':
+            if header == 'GIF2':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -226,8 +235,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ",end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ",end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -238,10 +247,10 @@ def FileRecovery(disk_hex):
                     search = loc + 12
 
             # JPG
-            elif header == 'JPG':
+            if header == 'JPG':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -261,8 +270,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ",end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ",end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -273,10 +282,10 @@ def FileRecovery(disk_hex):
                     search = loc + 6
             
             # DOCX
-            elif header == 'DOCX':
+            if header == 'DOCX':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -296,8 +305,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ", end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ", end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -308,10 +317,10 @@ def FileRecovery(disk_hex):
                     search = loc + 16
 
             # AVI
-            elif header == 'AVI':
+            if header == 'AVI':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -329,8 +338,8 @@ def FileRecovery(disk_hex):
                     end_offset = start_offset + file_size
                     
                     # Printing Information
-                    print(file_name + ", ", end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ", end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,file_size,file_name)
@@ -341,10 +350,10 @@ def FileRecovery(disk_hex):
                     search = loc + 32
 
             # PNG
-            elif header == 'PNG':
+            if header == 'PNG':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -364,8 +373,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ", end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ", end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -376,10 +385,10 @@ def FileRecovery(disk_hex):
                     search = loc + 16
 
             # ZIP
-            elif header == 'ZIP':
+            if header == 'ZIP':
 
                 # Start of Sector
-                if (loc%512) == 0:
+                if loc%512 == 0:
 
                     # Found File 
                     total_found = total_found + 1
@@ -399,8 +408,8 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ", end='')
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ", end='')
+                    print(file_name + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -420,8 +429,7 @@ def File_Extract(start_offset,count, file_name):
 
 def generateHash(inputFile):
     hash = 'sha256sum' + inputFile
-    print('SHA-256: ', end='')
-    os.system(hash)
+    print('SHA-256: ' + os.system(hash))
 
 
 if __name__ == "__main__":
