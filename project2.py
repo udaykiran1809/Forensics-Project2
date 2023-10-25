@@ -3,9 +3,8 @@ import sys
 import math
 import struct
 
- # BMP possible error when calculating file sizes
-
- # Potentially need to include WinZIP
+# Correction with BMP, AVI, and ZIP calculations
+# Potentially need to include WinZIP
 
 
 file_header = {
@@ -87,7 +86,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -132,7 +131,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -152,9 +151,12 @@ def FileRecovery(disk_hex):
                     # Found File 
                     total_found = total_found + 1
                     
-                    # Calculate size of file from header
-                    file_size = disk_hex[loc + 4: loc + 12]
-                    file_size = struct.pack('<Q', file_size)
+                    # Calculate size of file from header and convert to decimal
+                    file_size = disk_hex[loc + 10: loc + 12]
+                    file_size = file_size + disk_hex[loc + 8: loc + 10]
+                    file_size = file_size + disk_hex[loc + 6: loc + 8]
+                    file_size = file_size + disk_hex[loc + 4: loc + 6]
+
                     file_size = int(file_size, 16)
 
                     # Generating File Name
@@ -165,7 +167,7 @@ def FileRecovery(disk_hex):
                     end_offset = start_offset + file_size
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -200,7 +202,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -235,7 +237,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -270,7 +272,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -305,7 +307,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -325,9 +327,12 @@ def FileRecovery(disk_hex):
                     # Found File 
                     total_found = total_found + 1
                     
-                    # COllecting File Size
-                    file_size = disk_hex[loc + 8: loc + 16]
-                    file_size = struct.pack('<Q', file_size)
+                    # Collecting File Size and converting to decimal
+                    file_size = disk_hex[loc + 14: loc + 16]
+                    file_size = file_size + disk_hex[loc + 12: loc + 14]
+                    file_size = file_size + disk_hex[loc + 10: loc + 12]
+                    file_size = file_size + disk_hex[loc + 8: loc + 10]
+
                     file_size = int(file_size, 16)
 
                     # Generating File Name
@@ -338,7 +343,7 @@ def FileRecovery(disk_hex):
                     end_offset = start_offset + file_size
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -373,7 +378,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -408,7 +413,7 @@ def FileRecovery(disk_hex):
                     filesize = end_offset - start_offset
                     
                     # Printing Information
-                    print(file_name + ", ")
+                    print(file_name, end = ", ")
                     print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
@@ -429,7 +434,7 @@ def File_Extract(start_offset,count, file_name):
 
 def generateHash(inputFile):
     hash = 'sha256sum ' + inputFile
-    print('SHA-256: ' + str(os.system(hash)))
+    (os.system(hash))
 
 
 if __name__ == "__main__":
