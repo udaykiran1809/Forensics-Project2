@@ -88,7 +88,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -133,7 +133,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -166,7 +166,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,file_size,file_name)
@@ -201,7 +201,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -236,7 +236,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -271,7 +271,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -306,7 +306,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -339,7 +339,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,file_size,file_name)
@@ -374,7 +374,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -409,7 +409,7 @@ def FileRecovery(disk_hex):
                     
                     # Printing Information
                     print(file_name + ", ")
-                    print('Start Offset: ' + str(hex(start_offset)) + ", ")
+                    print('Start Offset: ' + str(hex(start_offset)), end = ", ")
                     print('End Offset: ' + str(hex(end_offset)))
 
                     File_Extract(start_offset,filesize,file_name)
@@ -428,8 +428,8 @@ def File_Extract(start_offset,count, file_name):
     generateHash(file_name)
 
 def generateHash(inputFile):
-    hash = 'sha256sum' + inputFile
-    print('SHA-256: ' + os.system(hash))
+    hash = 'sha256sum ' + inputFile
+    print('SHA-256: ' + str(os.system(hash)))
 
 
 if __name__ == "__main__":
