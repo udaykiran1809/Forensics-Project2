@@ -419,7 +419,7 @@ def FileRecovery(disk_hex):
                     # If not start of sector move to the next search space
                     search = loc + 8
 
-        loc = disk_hex.find(file_header[header], search)
+            loc = disk_hex.find(file_header[header], search)
 
 def File_Extract(start_offset,count, file_name):
     extraction_command = 'dd if=' + str(sys.argv[1]) + ' of=' + str(file_name) + ' bs=1 skip=' + str(start_offset) + ' count='+ str(count)
