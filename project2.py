@@ -152,10 +152,10 @@ def FileRecovery(disk_hex):
                     total_found = total_found + 1
                     
                     # Calculate size of file from header and convert to decimal
-                    file_size = disk_hex[loc + 10: loc + 12]
-                    file_size = file_size + disk_hex[loc + 8: loc + 10]
-                    file_size = file_size + disk_hex[loc + 6: loc + 8]
-                    file_size = file_size + disk_hex[loc + 4: loc + 6]
+                    file_size = str(disk_hex[loc + 10: loc + 12])
+                    file_size = file_size + str(disk_hex[loc + 8: loc + 10])
+                    file_size = file_size + str(disk_hex[loc + 6: loc + 8])
+                    file_size = file_size + str(disk_hex[loc + 4: loc + 6])
 
                     file_size = int(file_size, 16)
 
@@ -328,10 +328,10 @@ def FileRecovery(disk_hex):
                     total_found = total_found + 1
                     
                     # Collecting File Size and converting to decimal
-                    file_size = disk_hex[loc + 14: loc + 16]
-                    file_size = file_size + disk_hex[loc + 12: loc + 14]
-                    file_size = file_size + disk_hex[loc + 10: loc + 12]
-                    file_size = file_size + disk_hex[loc + 8: loc + 10]
+                    file_size = str(disk_hex[loc + 14: loc + 16])
+                    file_size = file_size + str(disk_hex[loc + 12: loc + 14])
+                    file_size = file_size + str(disk_hex[loc + 10: loc + 12])
+                    file_size = file_size + str(disk_hex[loc + 8: loc + 10])
 
                     file_size = int(file_size, 16)
 
